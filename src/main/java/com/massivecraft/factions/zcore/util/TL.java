@@ -634,6 +634,7 @@ public enum TL {
     COMMAND_SHOW_NEEDFACTION("&cYou need to join a faction to view your own!"),
 
     COMMAND_SETSTRIKES_FAILURE("&c&l[!]&7 &c{faction} does not exist."),
+    COMMAND_SETSTRIKES_BROADCAST("&c&l[!]&7 &c{faction} has received a strike for {reason}"),
     COMMAND_SETSTRIKES_SUCCESS("&c&l[!]&7 &c{faction}'s&7 new strikes are &c{strikes}"),
     COMMAND_SETSTRIKES_DESCRIPTION("Set a faction's points"),
 
@@ -670,6 +671,7 @@ public enum TL {
     COMMAND_STRIKE_MESSAGE("&c&l[!] &7{faction} has {strikes} strikes."),
     COMMAND_STRIKE_NOTFOUND("&c&l[!] &7{faction} does not exist."),
     COMMAND_STRIKE_NEEDFACTION("&c&l[!] &7&cYou need to join a faction to view your own!"),
+    COMMAND_STRIKE_DESCRIPTION("Give a faction strikes."),
 
     COMMAND_SEECHUNK_ENABLED("&cSeechunk enabled!"),
     COMMAND_SEECHUNK_DISABLED("&cSeechunk disabled!"),
@@ -745,7 +747,7 @@ public enum TL {
     COMMAND_UNCLAIMALL_DESCRIPTION("Unclaim all of your factions land"),
     COMMAND_UNCLAIM_CLICKTOUNCLAIM("Click to unclaim &2(%1$d, %2$d)"),
 
-    COMMAND_VERSION_NAME("&c&l[!]&7 &c&k||| &r&4SavageFactions&7 &c&k|||&r &c» &7By ProSavage"),
+    COMMAND_VERSION_NAME("&c&l[!]&7 &c&k|||&r &4DemonicFactions&7 &c&k|||&r &c» &7By ProSavage"),
     COMMAND_VERSION_VERSION("&7Version &c» &7%1$s"),
     COMMAND_VERSION_DESCRIPTION("Show plugin and translation version information"),
 

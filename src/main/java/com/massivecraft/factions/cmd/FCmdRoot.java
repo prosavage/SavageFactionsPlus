@@ -104,7 +104,8 @@ public class FCmdRoot extends FCommand {
     public CmdTntFill cmdTntFill = new CmdTntFill();
     public CmdChest cmdChest = new CmdChest();
     public CmdSetBanner cmdSetBanner = new CmdSetBanner();
-
+    public CmdStrike cmdStrike = new CmdStrike();
+    public CmdSetStrikes cmdSetStrikes = new CmdSetStrikes();
 
     public FCmdRoot() {
         super();
@@ -216,7 +217,8 @@ public class FCmdRoot extends FCommand {
         this.addSubCommand(this.cmdTntFill);
         this.addSubCommand(this.cmdChest);
         this.addSubCommand(this.cmdSetBanner);
-
+        this.addSubCommand(this.cmdStrike);
+        this.addSubCommand(this.cmdSetStrikes);
 
         if (Bukkit.getServer().getPluginManager().getPlugin("CoreProtect") != null) {
             SavageFactions.plugin.log("Found CoreProtect, enabling Inspect");

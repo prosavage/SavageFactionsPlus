@@ -633,6 +633,10 @@ public enum TL {
     COMMAND_SHOW_EXEMPT("<b>This faction is exempt and cannot be seen."),
     COMMAND_SHOW_NEEDFACTION("&cYou need to join a faction to view your own!"),
 
+    COMMAND_SETSTRIKES_FAILURE("&c&l[!]&7 &c{faction} does not exist."),
+    COMMAND_SETSTRIKES_SUCCESS("&c&l[!]&7 &c{faction}'s&7 new strikes are &c{strikes}"),
+    COMMAND_SETSTRIKES_DESCRIPTION("Set a faction's points"),
+
     COMMAND_SHOWCLAIMS_HEADER("&8&m-------------&8<{faction}'s claims&8>&8&m-------------"),
     COMMAND_SHOWCLAIMS_FORMAT("&8[{world}]:"),
     COMMAND_SHOWCLAIMS_CHUNKSFORMAT("&8(&c{x}&8,&c{z}&8)"),
@@ -661,6 +665,11 @@ public enum TL {
     COMMAND_STUCK_TOSTUCK("to safely teleport %1$s out"),
     COMMAND_STUCK_FORSTUCK("for %1$s initiating a safe teleport out"),
     COMMAND_STUCK_DESCRIPTION("Safely teleports you out of enemy faction"),
+
+
+    COMMAND_STRIKE_MESSAGE("&c&l[!] &7{faction} has {strikes} strikes."),
+    COMMAND_STRIKE_NOTFOUND("&c&l[!] &7{faction} does not exist."),
+    COMMAND_STRIKE_NEEDFACTION("&c&l[!] &7&cYou need to join a faction to view your own!"),
 
     COMMAND_SEECHUNK_ENABLED("&cSeechunk enabled!"),
     COMMAND_SEECHUNK_DISABLED("&cSeechunk disabled!"),

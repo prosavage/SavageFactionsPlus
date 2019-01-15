@@ -68,7 +68,7 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
     Inventory chest;
     Map<String, Object> bannerSerialized;
     private long lastDeath;
-   private int strikes;
+   private int strikes = 0;
 
     // -------------------------------------------- //
     // Construct

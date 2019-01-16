@@ -107,7 +107,8 @@ public enum Permission {
     SHOWCLAIMS("showclaims"),
     WARP("warp"),
     CHEST("Chest"),
-    SETSTRIKES("setstrikes");
+   SETSTRIKES("setstrikes"),
+   GIVETRENCH("givetrench");
 
     public final String node;
 

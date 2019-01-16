@@ -8,6 +8,7 @@ import com.massivecraft.factions.struct.Role;
 import com.massivecraft.factions.util.Particles.ParticleEffect;
 import com.massivecraft.factions.zcore.fperms.Access;
 import com.massivecraft.factions.zcore.fperms.PermissableAction;
+import com.massivecraft.factions.zcore.nbtapi.NBTItem;
 import com.massivecraft.factions.zcore.util.TL;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -496,6 +497,48 @@ public class FactionsBlockListener implements Listener {
         return !rel.confDenyBuild(otherFaction.hasPlayersOnline());
     }
 
+    private void onTrench(BlockBreakEvent event) {
+        if (event.getPlayer().getItemInHand() == null
+                || (event.getPlayer().getItemInHand().getType() != Material.DIAMOND_PICKAXE && event.getPlayer().getItemInHand().getType() != Material.DIAMOND_SHOVEL)
+                || !new NBTItem(event.getPlayer().getItemInHand()).hasKey("trench")) {
+            return;
+        }
+        Player player = event.getPlayer();
+        Faction faction = FPlayers.getInstance().getByPlayer(event.getPlayer()).getFaction();
+        Faction wilderness = Factions.getInstance().getWilderness();
+        NBTItem nbtItem = new NBTItem(event.getPlayer().getItemInHand());
+        int radius = nbtItem.getInteger("radius");
+        int goesInto = radius / 2;
+        radius = radius - (goesInto + 1);
+        Block block = event.getBlock();
+        for (double x = block.getLocation().getX() - radius; x <= block.getLocation().getX() + radius; x++) {
+            for (double y = block.getLocation().getY() - radius; y <= block.getLocation().getY() + radius; y++) {
+                for (double z = block.getLocation().getZ() - radius; z <= block.getLocation().getZ() + radius; z++) {
+                    Location loc = new Location(block.getWorld(), x, y, z);
+                    if (loc.getBlock().getType() == Material.BEDROCK
+                            || loc.getBlock().getType() == Material.AIR
+                            || Conf.trenchIgnoredBlocks.contains(loc.getBlock().getType().toString())
+                            || Worldguard.playerCanBuild(player, loc)) {
+                        continue;
+                    }
+                    Faction factionAt = (Board.getInstance().getFactionAt(new FLocation(block.getLocation())));
+                    if (factionAt.equals(wilderness) || factionAt.equals(faction)) {
+                        event.getPlayer().getInventory().addItem(new ItemStack(loc.getBlock().getType()));
+                        loc.getBlock().setType(Material.AIR);
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    @EventHandler
+    public void onBlockBreakTrench(BlockBreakEvent event) {
+        onTrench(event);
+    }
+
+
     @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         if (!playerCanBuildDestroyBlock(event.getPlayer(), event.getBlock().getLocation(), "destroy", false)) {
@@ -515,5 +558,6 @@ public class FactionsBlockListener implements Listener {
                 }
             }
         }
+        onTrench(event);
     }
 }

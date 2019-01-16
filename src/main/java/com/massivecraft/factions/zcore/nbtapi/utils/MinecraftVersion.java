@@ -25,7 +25,7 @@ public enum MinecraftVersion {
         if (version == null)
         {
 	        final String ver = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
-	        System.out.println("[NBTAPI] Found Spigot: " + ver + "!Trying to find NMS support");
+           // System.out.println("[NBTAPI] Found Spigot: " + ver + "!Trying to find NMS support");
 	        
 	        try {
 	            version = MinecraftVersion.valueOf(ver.replace("v", "MC"));
@@ -34,7 +34,7 @@ public enum MinecraftVersion {
 	        }
 	        
 	        if (version != Unknown) {
-	            System.out.println("[NBTAPI] NMS support '" + version.name() + "' loaded!");
+               // System.out.println("[NBTAPI] NMS support '" + version.name() + "' loaded!");
 	        } else {
 	            System.out.println("[NBTAPI] Wasn't able to find NMS Support!Some functions will not work!");
 	        }

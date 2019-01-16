@@ -102,6 +102,7 @@ public class Conf {
     public static boolean logMoneyTransactions = true;
     public static boolean logPlayerCommands = true;
     // prevent some potential exploits
+
     public static boolean handleExploitObsidianGenerators = true;
     public static boolean handleExploitEnderPearlClipping = true;
     public static boolean handleExploitInteractionSpam = true;
@@ -239,6 +240,11 @@ public class Conf {
     public static double econCostMap = 0.0;
     public static double econCostPower = 0.0;
     public static double econCostShow = 0.0;
+
+    public static String trenchToolName = "&cTrench {tooltype} &4{radius}&7x&4{radius}";
+    public static List<String> trenchToolLore = new ArrayList<>();
+    public static HashMap<String, Integer> trenchToolEnchantments = new HashMap<>();
+    public static List<String> trenchIgnoredBlocks = new ArrayList<>();
 
 
     // -------------------------------------------- //
@@ -430,6 +436,16 @@ public class Conf {
         safeZoneNerfedCreatureTypes.add(EntityType.WITCH);
         safeZoneNerfedCreatureTypes.add(EntityType.WITHER);
         safeZoneNerfedCreatureTypes.add(EntityType.ZOMBIE);
+
+
+        trenchToolEnchantments.put("dig_speed", 5);
+        trenchToolEnchantments.put("durability", 3);
+
+        trenchToolLore.add("&cRadius: &7{radius}");
+        trenchToolLore.add("&cTool Type: &7{tooltype}");
+
+        trenchIgnoredBlocks.add(MultiversionMaterials.SPAWNER.parseMaterial().toString());
+        trenchIgnoredBlocks.add(MultiversionMaterials.CHEST.parseMaterial().toString());
     }
 
     public static void load() {

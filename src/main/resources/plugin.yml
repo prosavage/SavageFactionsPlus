@@ -336,3 +336,5 @@ permissions:
     description: View all you faction claims.
   factions.setstrikes:
     description: Set the faction's strikes.
+  factions.givetrench:
+    description: Allows an admin to give a player trench tools.

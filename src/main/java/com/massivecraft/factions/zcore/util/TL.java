@@ -175,6 +175,10 @@ public enum TL {
     COMMAND_TPBANNER_SUCCESS("&c&l[!] &cTeleporting &7to your factions's &c&lWarBanner"),
     COMMAND_TPBANNER_DESCRIPTION("Teleport to your faction banner"),
 
+    COMMAND_TRENCH_NOSPACE("&c&l[!] &7You have no space in your inventory, item dropped on floor"),
+    COMMAND_TRENCH_GIVEN("&c&l[!] &7You have been given a &4{radius}&7x &cTrench Tool"),
+    COMMAND_TRENCH_SUCCESS("&c&l[!] &7You have given {player} a Trench Tool"),
+    COMMAND_TRENCH_DESCRIPTION("Give a player a trench tool"),
 
     COMMAND_CHAT_DISABLED("&c&l[!] &7The built in chat channels are &cdisabled &7on this server."),
     COMMAND_CHAT_INVALIDMODE("&c&l[!] &cUnrecognised &7chat mode. Please enter either '&da&7','&af&7','&6m&7' or '&fp&7'"),

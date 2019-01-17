@@ -5,6 +5,7 @@ import com.massivecraft.factions.integration.Worldguard;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.struct.Relation;
 import com.massivecraft.factions.struct.Role;
+import com.massivecraft.factions.util.MultiversionMaterials;
 import com.massivecraft.factions.util.Particles.ParticleEffect;
 import com.massivecraft.factions.zcore.fperms.Access;
 import com.massivecraft.factions.zcore.fperms.PermissableAction;
@@ -499,7 +500,8 @@ public class FactionsBlockListener implements Listener {
 
     private void onTrench(BlockBreakEvent event) {
         if (event.getPlayer().getItemInHand() == null
-                || (event.getPlayer().getItemInHand().getType() != Material.DIAMOND_PICKAXE && event.getPlayer().getItemInHand().getType() != Material.DIAMOND_SHOVEL)
+                || (event.getPlayer().getItemInHand().getType() != MultiversionMaterials.DIAMOND_PICKAXE.parseMaterial()
+                && event.getPlayer().getItemInHand().getType() != MultiversionMaterials.DIAMOND_SHOVEL.parseMaterial())
                 || !new NBTItem(event.getPlayer().getItemInHand()).hasKey("trench")) {
             return;
         }

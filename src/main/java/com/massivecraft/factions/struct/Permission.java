@@ -108,7 +108,8 @@ public enum Permission {
     WARP("warp"),
     CHEST("Chest"),
    SETSTRIKES("setstrikes"),
-   GIVETRENCH("givetrench");
+   GIVETRENCH("givetrench"),
+   GIVEWAND("givewand");
 
     public final String node;
 

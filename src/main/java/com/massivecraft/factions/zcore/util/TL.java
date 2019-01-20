@@ -755,6 +755,12 @@ public enum TL {
     COMMAND_VERSION_VERSION("&7Version &c» &7%1$s"),
     COMMAND_VERSION_DESCRIPTION("Show plugin and translation version information"),
 
+   COMMAND_WAND_GOTTEN("c&l[!]&7 You have received a {type} wand."),
+   COMMAND_WAND_SUCCESS("&c&l[!]&7 You have given a {type} wand to {player}."),
+   COMMAND_WAND_SELLWANDTIER_REQUIRED("&c&l[!]&7 Sellwands require tiers, use the command like /f wand {player} sell 1"),
+   COMMAND_WAND_NOSPACE("&c&l[!] &7You have no space in your inventory, item dropped on floor"),
+   COMMAND_WAND_DESCRIPTION("Give a player a wand."),
+
     COMMAND_WARUNCLAIMALL_DESCRIPTION("Unclaim all warzone land"),
     COMMAND_WARUNCLAIMALL_SUCCESS("<i>You unclaimed ALL war zone land."),
     COMMAND_WARUNCLAIMALL_LOG("%1$s unclaimed all war zones."),
@@ -780,6 +786,19 @@ public enum TL {
     LEAVE_DISBANDED("<i>%s<i> was disbanded."),
     LEAVE_DISBANDEDLOG("The faction %s (%s) was disbanded due to the last player (%s) leaving."),
     LEAVE_DESCRIPTION("\\n  &a&l» &7Leave your faction"),
+
+
+   /**
+    * Wand Usage
+    */
+   WAND_CANT_USE_HERE("&cYou cannot use this here"),
+   WAND_DEPOSIT_MONEY("&cYou have sold {items} items for ${amount} with a multiplier of {multiplier}"),
+   WAND_CHEST_EMPTY("&cChest is empty!"),
+   WAND_WAND_NOT_USED("&cWand not used, nothing happened"),
+   WAND_CRAFTED_ITEMS("&cCrafted all items in chest"),
+   WAND_CANNOT_USE_HERE("&cYou cannot use wands on that chest!"),
+   WAND_THISBLOCK_ISINVALID("&cThis block is invalid."),
+   WAND_SAND_SUCCESS("&cSuccessfully removed all vertical sand blocks."),
 
     /**
      * Claiming - Same as above basically. No COMMAND_* because it's not in a command class, but...

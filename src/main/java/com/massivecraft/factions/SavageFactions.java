@@ -64,6 +64,7 @@ public class SavageFactions extends MPlugin {
     public boolean mc17 = false;
     public boolean mc18 = false;
     public boolean mc113 = false;
+   public boolean wg7 = false;
     public boolean useNonPacketParticles = false;
     public boolean factionsFlight = false;
     //multiversion material fields
@@ -78,6 +79,7 @@ public class SavageFactions extends MPlugin {
     private boolean hookedPlayervaults;
     private ClipPlaceholderAPIManager clipPlaceholderAPIManager;
     private boolean mvdwPlaceholderAPIManager = false;
+
 
    SkriptAddon skriptAddon;
 
@@ -131,7 +133,7 @@ public class SavageFactions extends MPlugin {
             getServer().getPluginManager().disablePlugin(plugin);
             return;
         }
-
+//         Plugin wg = getServer().getPluginManager().getPlugin("WorldGuard");
         int version = Integer.parseInt(ReflectionUtils.PackageType.getServerVersion().split("_")[1]);
         if (version == 7) {
             SavageFactions.plugin.log("Minecraft Version 1.7 found, disabling banners, itemflags inside GUIs, and Titles.");
@@ -144,6 +146,10 @@ public class SavageFactions extends MPlugin {
             mc113 = true;
             changeItemIDSInConfig();
         }
+//        else if (wg != null && wg.getDescription().getVersion().charAt(0) == '7') {
+//           SavageFactions.plugin.log("WorldGuard Version 7 found, using new api.");
+//           wg7 = true;
+//        }
         setupMultiversionMaterials();
         migrateFPlayerLeaders();
         log("==== End Setup ====");

@@ -13,6 +13,7 @@ import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.struct.Relation;
 import com.massivecraft.factions.struct.Role;
 import com.massivecraft.factions.util.FactionGUI;
+import com.massivecraft.factions.util.Util;
 import com.massivecraft.factions.util.VisualizeUtil;
 import com.massivecraft.factions.zcore.fperms.Access;
 import com.massivecraft.factions.zcore.fperms.PermissableAction;
@@ -20,12 +21,17 @@ import com.massivecraft.factions.zcore.persist.MemoryFPlayer;
 import com.massivecraft.factions.zcore.util.TL;
 import com.massivecraft.factions.zcore.util.TagUtil;
 import com.massivecraft.factions.zcore.util.TextUtil;
+import com.massivecraft.factions.zcore.wands.Wand;
+import com.massivecraft.factions.zcore.wands.impl.CondenseWand;
+import com.massivecraft.factions.zcore.wands.impl.SandWand;
+import com.massivecraft.factions.zcore.wands.impl.SellWand;
 import net.coreprotect.CoreProtect;
 import net.coreprotect.CoreProtectAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.Chest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -36,6 +42,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.NumberConversions;
 
 import java.util.*;
@@ -288,6 +295,7 @@ public class FactionsPlayerListener implements Listener {
         case ANVIL:
         case CHIPPED_ANVIL:
         case DAMAGED_ANVIL:
+        case BREWING_STAND:
           action = PermissableAction.CONTAINER;
           break;
         default:
@@ -314,7 +322,7 @@ public class FactionsPlayerListener implements Listener {
     boolean doTerritoryEnemyProtectedCheck = true;
 
 
-    if (action.equals(PermissableAction.CONTAINER) ||
+    if (action != null && action.equals(PermissableAction.CONTAINER) ||
             (action.equals(PermissableAction.DOOR))) {
       if (access == Access.ALLOW) {
         doTerritoryEnemyProtectedCheck = false;
@@ -347,6 +355,56 @@ public class FactionsPlayerListener implements Listener {
       }
     }
     return true;
+  }
+
+  @EventHandler
+  public void onWandUse(PlayerInteractEvent event) {
+    if (event.getClickedBlock() == null
+            || (!Conf.sandWandItemsToRemove.contains(event.getClickedBlock().getType()) && event.getClickedBlock().getType() != Material.CHEST)
+            || event.getItem() == null
+            || !Wand.isWand(event.getItem())) {
+      return;
+    }
+
+
+    Player player = event.getPlayer();
+    Faction faction = FPlayers.getInstance().getByPlayer(player).getFaction();
+    Faction wilderness = Factions.getInstance().getWilderness();
+    ItemStack eventItem = event.getItem();
+    Block block = event.getClickedBlock();
+    Chest chest = null;
+    if (block.getState() instanceof Chest) {
+      chest = (Chest) block.getState();
+    }
+
+    Faction factionAt = (Board.getInstance().getFactionAt(new FLocation(event.getClickedBlock().getLocation())));
+    if (!factionAt.equals(wilderness) && !factionAt.equals(faction)) {
+      player.sendMessage(Util.color(TL.WAND_CANNOT_USE_HERE.toString()));
+      return;
+    }
+
+    if (chest != null && Util.isEmpty(chest.getBlockInventory())) {
+      player.sendMessage(Util.color(TL.WAND_CHEST_EMPTY.toString()));
+      return;
+    }
+    event.setCancelled(true);
+
+
+    if (SellWand.isSellWand(eventItem)) {
+      SellWand sellWand = new SellWand(eventItem, player, chest);
+      sellWand.takeWand();
+      sellWand.run();
+    } else if (CondenseWand.isCondenseWand(eventItem)) {
+      CondenseWand condenseWand = new CondenseWand(eventItem, player, chest);
+      condenseWand.takeWand();
+      condenseWand.run();
+    }
+    if (SandWand.isSandWand(eventItem)) {
+      SandWand sandWand = new SandWand(eventItem, player, block);
+      sandWand.takeWand();
+      sandWand.run();
+    }
+
   }
 
   public static boolean preventCommand(String fullCmd, Player player) {

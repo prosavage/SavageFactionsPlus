@@ -61,7 +61,11 @@ public class CmdTrench extends FCommand {
       } else {
          player.getInventory().addItem(createTrenchTool(toolType, radius));
       }
-      target.msg(TL.COMMAND_TRENCH_SUCCESS.toString()
+      target.msg(TL.COMMAND_TRENCH_GIVEN.toString()
+              .replace(radiusPlaceholder.getKey(), radiusPlaceholder.getValue())
+              .replace(itemTypePlaceholder.getKey(), itemTypePlaceholder.getValue())
+              .replace(playerPlaceholder.getKey(), playerPlaceholder.getValue()));
+      fme.msg(TL.COMMAND_TRENCH_SUCCESS.toString()
               .replace(radiusPlaceholder.getKey(), radiusPlaceholder.getValue())
               .replace(itemTypePlaceholder.getKey(), itemTypePlaceholder.getValue())
               .replace(playerPlaceholder.getKey(), playerPlaceholder.getValue()));

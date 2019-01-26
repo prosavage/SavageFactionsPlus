@@ -523,7 +523,7 @@ public class FactionsBlockListener implements Listener {
                             || Worldguard.playerCanBuild(player, loc)) {
                         continue;
                     }
-                    Faction factionAt = (Board.getInstance().getFactionAt(new FLocation(block.getLocation())));
+                    Faction factionAt = (Board.getInstance().getFactionAt(new FLocation(loc)));
                     if (factionAt.equals(wilderness) || factionAt.equals(faction)) {
                         event.getPlayer().getInventory().addItem(new ItemStack(loc.getBlock().getType()));
                         loc.getBlock().setType(Material.AIR);
@@ -535,10 +535,6 @@ public class FactionsBlockListener implements Listener {
 
     }
 
-    @EventHandler
-    public void onBlockBreakTrench(BlockBreakEvent event) {
-        onTrench(event);
-    }
 
 
     @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
@@ -548,6 +544,7 @@ public class FactionsBlockListener implements Listener {
             return;
         }
         FPlayer fme = FPlayers.getInstance().getByPlayer(event.getPlayer());
+        onTrench(event);
         if (!fme.hasFaction()) {
             return;
         }
@@ -560,6 +557,5 @@ public class FactionsBlockListener implements Listener {
                 }
             }
         }
-        onTrench(event);
     }
 }

@@ -9,7 +9,7 @@ import com.massivecraft.factions.zcore.util.TL;
 public class CmdShowClaims extends FCommand {
 
     public CmdShowClaims() {
-
+        super();
         this.aliases.add("showclaims");
         this.aliases.add("showclaim");
 

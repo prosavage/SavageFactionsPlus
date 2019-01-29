@@ -1,6 +1,7 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.Conf;
+import com.massivecraft.factions.PointRaiding;
 import com.massivecraft.factions.SavageFactions;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.util.Particles.ReflectionUtils;
@@ -25,10 +26,12 @@ public class CmdReload extends FCommand {
     @Override
     public void perform() {
         long timeInitStart = System.currentTimeMillis();
+        PointRaiding.load();
         Conf.load();
-       Conf.save();
-       SavageFactions.plugin.reloadConfig();
-       SavageFactions.plugin.changeItemIDSInConfig();
+        Conf.save();
+        PointRaiding.load();
+        SavageFactions.plugin.reloadConfig();
+        SavageFactions.plugin.changeItemIDSInConfig();
         SavageFactions.plugin.loadLang();
         int version = Integer.parseInt(ReflectionUtils.PackageType.getServerVersion().split("_")[1]);
 

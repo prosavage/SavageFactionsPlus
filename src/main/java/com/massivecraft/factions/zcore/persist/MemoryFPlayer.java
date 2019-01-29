@@ -2,11 +2,7 @@ package com.massivecraft.factions.zcore.persist;
 
 import com.massivecraft.factions.*;
 import com.massivecraft.factions.cmd.CmdFly;
-import com.massivecraft.factions.event.FPlayerLeaveEvent;
-import com.massivecraft.factions.event.FPlayerStoppedFlying;
-import com.massivecraft.factions.event.FactionDisbandEvent;
-import com.massivecraft.factions.event.LandClaimEvent;
-import com.massivecraft.factions.event.PowerRegenEvent;
+import com.massivecraft.factions.event.*;
 import com.massivecraft.factions.event.FactionDisbandEvent.PlayerDisbandReason;
 import com.massivecraft.factions.iface.EconomyParticipator;
 import com.massivecraft.factions.iface.RelationParticipator;
@@ -1208,7 +1204,7 @@ public abstract class MemoryFPlayer implements FPlayer {
     }
 
     @Override
-    public boolean hasMoney(int amt) {
+    public boolean hasMoney(double amt) {
         Economy econ = SavageFactions.plugin.getEcon();
         if (econ.getBalance(getPlayer()) >= amt) {
             return true;
@@ -1220,7 +1216,7 @@ public abstract class MemoryFPlayer implements FPlayer {
     }
 
     @Override
-    public void takeMoney(int amt) {
+    public void takeMoney(double amt) {
         if (hasMoney(amt)) {
             Economy econ = SavageFactions.plugin.getEcon();
             econ.withdrawPlayer(getPlayer(), amt);

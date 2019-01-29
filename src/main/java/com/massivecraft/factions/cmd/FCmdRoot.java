@@ -1,6 +1,7 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.Conf;
+import com.massivecraft.factions.PointRaiding;
 import com.massivecraft.factions.SavageFactions;
 import com.massivecraft.factions.zcore.util.TL;
 import org.bukkit.Bukkit;
@@ -107,7 +108,8 @@ public class FCmdRoot extends FCommand {
     public CmdStrike cmdStrike = new CmdStrike();
     public CmdSetStrikes cmdSetStrikes = new CmdSetStrikes();
     public CmdTrench cmdTrench = new CmdTrench();
-   public CmdWand cmdWand = new CmdWand();
+    public CmdWand cmdWand = new CmdWand();
+    public CmdStacker cmdStacker = new CmdStacker();
 
     public FCmdRoot() {
         super();
@@ -222,7 +224,12 @@ public class FCmdRoot extends FCommand {
         this.addSubCommand(this.cmdStrike);
         this.addSubCommand(this.cmdSetStrikes);
         this.addSubCommand(this.cmdTrench);
-       this.addSubCommand(this.cmdWand);
+        this.addSubCommand(this.cmdWand);
+
+        if (PointRaiding.POINT_RAIDING_ENABLED) {
+            SavageFactions.plugin.log("Point Raiding is Enabled, registering commands...");
+            this.addSubCommand(this.cmdStacker);
+        }
 
         if (Bukkit.getServer().getPluginManager().getPlugin("CoreProtect") != null) {
             SavageFactions.plugin.log("Found CoreProtect, enabling Inspect");

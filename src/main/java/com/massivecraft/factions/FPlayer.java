@@ -199,9 +199,9 @@ public interface FPlayer extends EconomyParticipator {
 
     int getDeaths();
 
-    void takeMoney(int amt);
+    void takeMoney(double amt);
 
-    boolean hasMoney(int amt);
+    boolean hasMoney(double amt);
 
     //inspect Stuff
 

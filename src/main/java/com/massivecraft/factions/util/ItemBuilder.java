@@ -3,6 +3,7 @@ package com.massivecraft.factions.util;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -71,6 +72,17 @@ public class ItemBuilder {
       meta.setLore(Util.color(placeholderLore));
       return this;
    }
+
+    public ItemBuilder glowing(boolean status) {
+        if (status) {
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        } else {
+            meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.removeEnchant(Enchantment.DURABILITY);
+        }
+        return this;
+    }
 
    public ItemBuilder name(String name) {
       meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));

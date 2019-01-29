@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.massivecraft.factions.integration.dynmap.DynmapStyle;
 import com.massivecraft.factions.util.CraftKey;
 import com.massivecraft.factions.util.MultiversionMaterials;
+import com.massivecraft.factions.zcore.persist.templates.ItemStackTemplate;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -271,6 +272,8 @@ public class Conf {
    public static HashMap<Material, CraftKey> craftKeys = new HashMap<>();
 
 
+    public static ItemStackTemplate stackerItem;
+
 
     // -------------------------------------------- //
     // INTEGRATION: DYNMAP
@@ -504,7 +507,6 @@ public class Conf {
                new CraftKey(MultiversionMaterials.COAL_BLOCK.parseMaterial(), 9, MultiversionMaterials.COAL_BLOCK.parseMaterial()));
        craftKeys.put(MultiversionMaterials.DIAMOND.parseMaterial(),
                new CraftKey(MultiversionMaterials.DIAMOND.parseMaterial(), 9, MultiversionMaterials.DIAMOND_BLOCK.parseMaterial()));
-
     }
 
     public static void load() {

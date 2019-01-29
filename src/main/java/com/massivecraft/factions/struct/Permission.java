@@ -105,6 +105,8 @@ public enum Permission {
     TNTFILL("tntfill"),
     COORD("coords"),
     SHOWCLAIMS("showclaims"),
+    STACKER("stacker"),
+    STACKER_ADMIN("stacker.admin"),
     WARP("warp"),
     CHEST("Chest"),
    SETSTRIKES("setstrikes"),

@@ -163,6 +163,7 @@ public class SavageFactions extends MPlugin {
 
         // Load Conf from disk
         Conf.load();
+        PointRaiding.load();
         Essentials.setup();
         hookedPlayervaults = setupPlayervaults();
         FPlayers.getInstance().load();

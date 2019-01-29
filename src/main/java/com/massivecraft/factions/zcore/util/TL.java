@@ -647,6 +647,10 @@ public enum TL {
     COMMAND_SHOWCLAIMS_CHUNKSFORMAT("&8(&c{x}&8,&c{z}&8)"),
     COMMAND_SHOWCLAIMS_DESCRIPTION("show your factions claims!"),
 
+    COMMAND_STACKER_DESCRIPTION("Get the faction block stacker."),
+    COMMAND_STACKER_NOTENOUGHMONEY("&c&l[!]&7 You do not have &cenough&7 money to do this"),
+
+
     COMMAND_SHOWINVITES_PENDING("Players with pending invites: "),
     COMMAND_SHOWINVITES_CLICKTOREVOKE("Click to revoke invite for %1$s"),
     COMMAND_SHOWINVITES_DESCRIPTION("Show pending faction invites"),

@@ -48,12 +48,12 @@ public class CmdShow extends FCommand {
     @Override
     public void perform() {
         Faction faction = myFaction;
-        if (this.argIsSet(0)) {
+        if (this.argIsSet(0))
             faction = this.argAsFaction(0);
-        }
-        if (faction == null) {
+
+        if (faction == null)
             return;
-        }
+
 
         if (fme != null && !fme.getPlayer().hasPermission("factions.show.bypassexempt")
                 && SavageFactions.plugin.getConfig().getStringList("show-exempt").contains(faction.getTag())) {
@@ -67,9 +67,9 @@ public class CmdShow extends FCommand {
         }
 
         List<String> show = SavageFactions.plugin.getConfig().getStringList("show");
-        if (show == null || show.isEmpty()) {
+        if (show == null || show.isEmpty())
             show = defaults;
-        }
+
 
         if (!faction.isNormal()) {
             String tag = faction.getTag(fme);
@@ -93,11 +93,10 @@ public class CmdShow extends FCommand {
                 parsed = TagUtil.parsePlaceholders(fme.getPlayer(), parsed);
             }
 
-            if (fme != null && TagUtil.hasFancy(parsed)) {
+            if (TagUtil.hasFancy(parsed)) {
                 List<FancyMessage> fancy = TagUtil.parseFancy(faction, fme, parsed);
-                if (fancy != null) {
+                if (fancy != null)
                     sendFancyMessage(fancy);
-                }
                 continue;
             }
             if (!parsed.contains("{notFrozen}") && !parsed.contains("{notPermanent}")) {

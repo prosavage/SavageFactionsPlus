@@ -106,7 +106,7 @@ tooltips:
   - "&6&l* &eRank: &7{group}"
   - "&6&l* &eBalance: &7${balance}"
   - "&6&l* &eLast Seen:&7 {lastSeen}"
-  - "&6&l* &ePower: &7{power}/{maxPower}"
+  - "&6&l* &ePower: &7{player-power}/{player-maxpower}"
 
 # Configuration section for Scoreboards
 # This will allow you to completely customize how your scoreboards look.
@@ -149,7 +149,7 @@ scoreboard:
   # {powerBoost} - player's powerboost.
 
   default-enabled: false # Default to false to keep original functionality.
-  default-title: "&cSavageFactions" # Can use any of the values from above but this won't update once it's set (so don't set {balance}).
+  default-title: "&cSavageFactions+" # Can use any of the values from above but this won't update once it's set (so don't set {balance}).
   default-update-interval: 2 # in seconds.
 
   # This will show faction prefixes colored based on relation on nametags and in the tab.
@@ -182,7 +182,7 @@ scoreboard:
   - " &8> &cBalance&7: &f${balance}"
   - "&m"
   - "&4&lServer Info &8» "
-  - " &8» &cIFaction: &fN/A"
+  - " &8» &cFaction: &fN/A"
   - " &8» &cOnline Players&7: &f{total-online}"
   - "&7&m---------------------------"
 
@@ -630,11 +630,11 @@ fperm-gui:
       name: ' '
       lore:
       -
-        ############################################################
-        # +------------------------------------------------------+ #
-        # |                  Faction Warp GUI                    | #
-        # +------------------------------------------------------+ #
-        ############################################################
+############################################################
+# +------------------------------------------------------+ #
+# |                  Faction Warp GUI                    | #
+# +------------------------------------------------------+ #
+############################################################
 
 fwarp-gui:
   name: "Faction Warps"
@@ -692,6 +692,22 @@ fwarp-gui:
       name: ' '
       lore:
       -
+
+############################################################
+# +------------------------------------------------------+ #
+# |         Faction Creation/Disband Broadcast           | #
+# +------------------------------------------------------+ #
+############################################################
+faction-creation-broadcast: true
+faction-disband-broadcast: true
+
+############################################################
+# +------------------------------------------------------+ #
+# |              Faction Invisibility                    | #
+# +------------------------------------------------------+ #
+############################################################
+See-Invisible-Faction-Members: false
+
 ############################################################
 # +------------------------------------------------------+ #
 # |                  Faction Rules                       | #
@@ -750,6 +766,7 @@ ffocus:
 # +------------------------------------------------------+ #
 # |                  Faction Vault                       | #
 # +------------------------------------------------------+ #
+############################################################
 fvault:
   Enabled: true
   No-Hoppers-near-vault: true
@@ -767,6 +784,7 @@ fvault:
 # +------------------------------------------------------+ #
 # |                  Faction Chest                       | #
 # +------------------------------------------------------+ #
+############################################################
 fchest:
   Enabled: true
   Inventory-Title: '&2&lFaction Chest'
@@ -976,7 +994,7 @@ fbanners:
 #Title when moving between chunks
 Title:
   Show-Title: true
-  # You can configure the time in 1.9 or higher! The values are in seconds
+  # You can configure the time in 1.9 or higher! The values are in ticks (20 ticks = 1 second)
   Options:
     FadeInTime: 1
     ShowTime: 10
@@ -1014,6 +1032,8 @@ MassiveStats: true
 #  - {name}      : Players name
 #  - {lastSeen}  : Last time player was seen (if offline), or just 'Online'
 #  - {balance} : Players balance
+#  - {player-power} : Player power
+#  - {player-maxpower} : Player max power
 #  - {player-kills} : # of kills the player has
 #  - {player-deaths}: # of deaths the player has
 # Faction variables. Can be used in tooltips.list, scoreboards, or /f show

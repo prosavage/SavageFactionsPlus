@@ -243,7 +243,7 @@ public enum TagReplacer {
                     return String.valueOf(fac.getFPlayersWhereOnline(true, fp).size());
                 } else {
                     // Only console should ever get here.
-                    return String.valueOf(fac.getFPlayers().size());
+                    return String.valueOf(fac.getFPlayersWhereOnline(true).size());
                 }
             case OFFLINE_COUNT:
                 return String.valueOf(fac.getFPlayers().size() - fac.getOnlinePlayers().size());

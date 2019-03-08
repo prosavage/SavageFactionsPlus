@@ -3,6 +3,7 @@ package com.massivecraft.factions.cmd;
 import com.massivecraft.factions.Conf;
 import com.massivecraft.factions.FLocation;
 import com.massivecraft.factions.Faction;
+import com.massivecraft.factions.SavageFactions;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.struct.Role;
 import com.massivecraft.factions.util.SpiralTask;
@@ -25,7 +26,7 @@ public class CmdClaim extends FCommand {
         this.disableOnLock = true;
 
 
-       senderMustBePlayer = true;
+        senderMustBePlayer = true;
         senderMustBeMember = false;
         senderMustBeModerator = false;
         senderMustBeColeader = false;
@@ -44,6 +45,12 @@ public class CmdClaim extends FCommand {
                 fme.msg(TL.GENERIC_FPERM_NOPERMISSION, "change faction territory");
                 return;
             }
+        }
+
+        if (forFaction.isWilderness()) {
+            CmdUnclaim cmdUnclaim = SavageFactions.plugin.cmdBase.cmdUnclaim;
+            cmdUnclaim.execute(sender, args.size() > 1 ? args.subList(0, 1):args);
+            return;
         }
 
 

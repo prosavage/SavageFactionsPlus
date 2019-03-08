@@ -56,7 +56,7 @@ public class SavageFactions extends MPlugin {
     // Single 4 life.
     public static SavageFactions plugin;
     public static Permission perms = null;
-
+    public com.earth2me.essentials.Essentials ess;
     public boolean PlaceholderApi;
     // Commands
     public FCmdRoot cmdBase;
@@ -226,11 +226,11 @@ public class SavageFactions extends MPlugin {
 
         // Register Event Handlers
         eventsListener = new Listener[] {
-    		new FactionsPlayerListener(this),
-    		new FactionsChatListener(this),
-    		new FactionsEntityListener(this),
+    		new FactionsPlayerListener(),
+    		new FactionsChatListener(),
+    		new FactionsEntityListener(),
     		new FactionsExploitListener(),
-    		new FactionsBlockListener(this),
+    		new FactionsBlockListener(),
     		new FUpgradesGUI(),
     		new EXPUpgrade(),
     		new CropUpgrades(),
@@ -243,7 +243,7 @@ public class SavageFactions extends MPlugin {
         // since some other plugins execute commands directly through this command interface, provide it
         getCommand(this.refCommand).setExecutor(this);
         getCommand(this.refCommand).setTabCompleter(this);
-
+        setupEssentials();
         if (getDescription().getFullName().contains("BETA")) {
             divider();
             System.out.println("You are using a BETA version of the plugin!");
@@ -531,18 +531,24 @@ public class SavageFactions extends MPlugin {
         String cmd = Conf.baseCommandAliases.isEmpty() ? "/f" : "/" + Conf.baseCommandAliases.get(0);
         return handleCommand(sender, cmd + " " + TextUtil.implode(Arrays.asList(split), " "), false);
     }
-    
+
+    private boolean setupEssentials() {
+        SavageFactions.plugin.ess = (com.earth2me.essentials.Essentials) this.getServer().getPluginManager().getPlugin("Essentials");
+        return SavageFactions.plugin.ess == null;
+    }
+
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-       FPlayer fPlayer = FPlayers.getInstance().getByPlayer((Player) sender);
-    	List<String> completions = new ArrayList<>();
-    	String cmd = Conf.baseCommandAliases.isEmpty() ? "/f" : "/" + Conf.baseCommandAliases.get(0);
-    	List<String> argsList = new ArrayList<>(Arrays.asList(args));
-    	argsList.remove(argsList.size() - 1);
-    	String cmdValid = (cmd + " " + TextUtil.implode(argsList, " ")).trim();
-    	MCommand<?> commandEx = cmdBase;
-    	List<MCommand<?>> commandsList = cmdBase.subCommands;
-       if (Board.getInstance().getFactionAt(new FLocation(fPlayer.getPlayer().getLocation())) == Factions.getInstance().getWarZone()) {
+        FPlayer fPlayer = FPlayers.getInstance().getByPlayer((Player) sender);
+        List<String> completions = new ArrayList<>();
+        String cmd = Conf.baseCommandAliases.isEmpty() ? "/f" : "/" + Conf.baseCommandAliases.get(0);
+        List<String> argsList = new ArrayList<>(Arrays.asList(args));
+        argsList.remove(argsList.size() - 1);
+        String cmdValid = (cmd + " " + TextUtil.implode(argsList, " ")).trim();
+        MCommand<?> commandEx = cmdBase;
+        List<MCommand<?>> commandsList = cmdBase.subCommands;
+
+        if (Board.getInstance().getFactionAt(new FLocation(fPlayer.getPlayer().getLocation())) == Factions.getInstance().getWarZone()) {
           sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cYou cannot use autocomplete in warzone."));
           return new ArrayList<>();
        }
@@ -561,7 +567,9 @@ public class SavageFactions extends MPlugin {
         	}
         	else break;
     	}
-    	
+
+
+
     	if (argsList.isEmpty())
     	{
     		for (MCommand<?> subCommand: commandEx.subCommands)

@@ -36,7 +36,7 @@ public class Conf {
     public static ChatColor colorWar = ChatColor.DARK_RED;
     // Power
     public static double powerPlayerMax = 10.0;
-    public static double powerPlayerMin = - 10.0;
+    public static double powerPlayerMin = -10.0;
     public static double powerPlayerStarting = 0.0;
     public static double powerPerMinute = 0.2; // Default health rate... it takes 5 min to heal one power
     public static double powerPerDeath = 4.0; // A death makes you lose 4 power
@@ -242,34 +242,33 @@ public class Conf {
     public static double econCostPower = 0.0;
     public static double econCostShow = 0.0;
 
-   public static String trenchToolName = "&c&lTrench {tooltype} &7({radius}x{radius})";
+    public static String trenchToolName = "&c&lTrench {tooltype} &7({radius}x{radius})";
     public static List<String> trenchToolLore = new ArrayList<>();
     public static HashMap<String, Integer> trenchToolEnchantments = new HashMap<>();
     public static List<String> trenchIgnoredBlocks = new ArrayList<>();
 
 
-   public static int lightningWandUses = 100;
-   public static String lightningWandItemName = "&eLightning Wand";
-   public static List<String> lightningWandItemLore = new ArrayList<>();
+    public static int lightningWandUses = 100;
+    public static String lightningWandItemName = "&eLightning Wand";
+    public static List<String> lightningWandItemLore = new ArrayList<>();
 
 
-   public static int sandWandUses = 100;
-   public static String sandWandItemName = "&eSandWand";
-   public static List<String> sandWandItemLore = new ArrayList<>();
-   public static List<Material> sandWandItemsToRemove = new ArrayList<>();
+    public static int sandWandUses = 100;
+    public static String sandWandItemName = "&eSandWand";
+    public static List<String> sandWandItemLore = new ArrayList<>();
+    public static List<Material> sandWandItemsToRemove = new ArrayList<>();
 
 
-   public static int sellWandUses = 100;
-   public static String sellWandItemName = "&eSellWand";
-   public static List<String> sellWandItemLore = new ArrayList<>();
-   public static HashMap<Integer, Double> sellWandUpgradeTierRatio = new HashMap<>();
+    public static int sellWandUses = 100;
+    public static String sellWandItemName = "&eSellWand";
+    public static List<String> sellWandItemLore = new ArrayList<>();
+    public static HashMap<Integer, Double> sellWandUpgradeTierRatio = new HashMap<>();
 
-   public static int craftWandUses = 100;
-   public static String craftWandItemName = "&bCraftWand";
-   public static List<String> craftWandItemLore = new ArrayList<>();
-   public static HashMap<Material, Double> costMap = new HashMap<>();
-   public static HashMap<Material, CraftKey> craftKeys = new HashMap<>();
-
+    public static int craftWandUses = 100;
+    public static String craftWandItemName = "&bCraftWand";
+    public static List<String> craftWandItemLore = new ArrayList<>();
+    public static HashMap<Material, Double> costMap = new HashMap<>();
+    public static HashMap<Material, CraftKey> craftKeys = new HashMap<>();
 
 
     // -------------------------------------------- //
@@ -466,44 +465,44 @@ public class Conf {
         trenchToolEnchantments.put("dig_speed", 5);
         trenchToolEnchantments.put("durability", 3);
 
-       trenchToolLore.add("&7");
-       trenchToolLore.add("&c&lInformation:");
-       trenchToolLore.add("&c&l * &7Radius: &c{radius}");
-       trenchToolLore.add("&c&l * &7Type: &c{tooltype}");
-       trenchToolLore.add("&c&l * &7Blacklist: &cSpawner/Chest");
-       trenchToolLore.add("&c&l(!) &cBlocks are picked up Automatically.");
+        trenchToolLore.add("&7");
+        trenchToolLore.add("&c&lInformation:");
+        trenchToolLore.add("&c&l * &7Radius: &c{radius}");
+        trenchToolLore.add("&c&l * &7Type: &c{tooltype}");
+        trenchToolLore.add("&c&l * &7Blacklist: &cSpawner/Chest");
+        trenchToolLore.add("&c&l(!) &cBlocks are picked up Automatically.");
 
         trenchIgnoredBlocks.add(MultiversionMaterials.SPAWNER.parseMaterial().toString());
         trenchIgnoredBlocks.add(MultiversionMaterials.CHEST.parseMaterial().toString());
 
-       sandWandItemLore.add("&eUses: {uses}");
+        sandWandItemLore.add("&eUses: {uses}");
 
-       sandWandItemsToRemove.add(MultiversionMaterials.SAND.parseMaterial());
-       sandWandItemsToRemove.add(MultiversionMaterials.GRAVEL.parseMaterial());
+        sandWandItemsToRemove.add(MultiversionMaterials.SAND.parseMaterial());
+        sandWandItemsToRemove.add(MultiversionMaterials.GRAVEL.parseMaterial());
 
-       sellWandUpgradeTierRatio.put(1, 1.0);
-       sellWandUpgradeTierRatio.put(2, 1.25);
-       sellWandUpgradeTierRatio.put(3, 1.5);
+        sellWandUpgradeTierRatio.put(1, 1.0);
+        sellWandUpgradeTierRatio.put(2, 1.25);
+        sellWandUpgradeTierRatio.put(3, 1.5);
 
-       sellWandItemLore.add("&eTier: {tier}");
-       sellWandItemLore.add("&eUses: {uses}");
+        sellWandItemLore.add("&eTier: {tier}");
+        sellWandItemLore.add("&eUses: {uses}");
 
-       costMap.put(MultiversionMaterials.IRON_INGOT.parseMaterial(), 20.0);
-       costMap.put(MultiversionMaterials.GOLD_INGOT.parseMaterial(), 50.0);
-       costMap.put(MultiversionMaterials.DIAMOND.parseMaterial(), 100.0);
-       costMap.put(MultiversionMaterials.EMERALD.parseMaterial(), 101.0);
+        costMap.put(MultiversionMaterials.IRON_INGOT.parseMaterial(), 20.0);
+        costMap.put(MultiversionMaterials.GOLD_INGOT.parseMaterial(), 50.0);
+        costMap.put(MultiversionMaterials.DIAMOND.parseMaterial(), 100.0);
+        costMap.put(MultiversionMaterials.EMERALD.parseMaterial(), 101.0);
 
 
-       craftWandItemLore.add("&eUses: {uses}");
+        craftWandItemLore.add("&eUses: {uses}");
 
-       craftKeys.put(MultiversionMaterials.IRON_INGOT.parseMaterial(),
-               new CraftKey(MultiversionMaterials.IRON_INGOT.parseMaterial(), 9, MultiversionMaterials.IRON_BLOCK.parseMaterial()));
-       craftKeys.put(MultiversionMaterials.GOLD_INGOT.parseMaterial(),
-               new CraftKey(MultiversionMaterials.GOLD_INGOT.parseMaterial(), 9, MultiversionMaterials.GOLD_INGOT.parseMaterial()));
-       craftKeys.put(MultiversionMaterials.COAL.parseMaterial(),
-               new CraftKey(MultiversionMaterials.COAL_BLOCK.parseMaterial(), 9, MultiversionMaterials.COAL_BLOCK.parseMaterial()));
-       craftKeys.put(MultiversionMaterials.DIAMOND.parseMaterial(),
-               new CraftKey(MultiversionMaterials.DIAMOND.parseMaterial(), 9, MultiversionMaterials.DIAMOND_BLOCK.parseMaterial()));
+        craftKeys.put(MultiversionMaterials.IRON_INGOT.parseMaterial(),
+                new CraftKey(MultiversionMaterials.IRON_INGOT.parseMaterial(), 9, MultiversionMaterials.IRON_BLOCK.parseMaterial()));
+        craftKeys.put(MultiversionMaterials.GOLD_INGOT.parseMaterial(),
+                new CraftKey(MultiversionMaterials.GOLD_INGOT.parseMaterial(), 9, MultiversionMaterials.GOLD_INGOT.parseMaterial()));
+        craftKeys.put(MultiversionMaterials.COAL.parseMaterial(),
+                new CraftKey(MultiversionMaterials.COAL_BLOCK.parseMaterial(), 9, MultiversionMaterials.COAL_BLOCK.parseMaterial()));
+        craftKeys.put(MultiversionMaterials.DIAMOND.parseMaterial(),
+                new CraftKey(MultiversionMaterials.DIAMOND.parseMaterial(), 9, MultiversionMaterials.DIAMOND_BLOCK.parseMaterial()));
 
     }
 

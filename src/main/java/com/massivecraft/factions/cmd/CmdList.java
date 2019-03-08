@@ -72,7 +72,7 @@ public class CmdList extends FCommand {
                 if (f1Size < f2Size) {
                     return 1;
                 } else if (f1Size > f2Size) {
-                    return - 1;
+                    return -1;
                 }
                 return 0;
             }
@@ -87,7 +87,7 @@ public class CmdList extends FCommand {
                 if (f1Size < f2Size) {
                     return 1;
                 } else if (f1Size > f2Size) {
-                    return - 1;
+                    return -1;
                 }
                 return 0;
             }

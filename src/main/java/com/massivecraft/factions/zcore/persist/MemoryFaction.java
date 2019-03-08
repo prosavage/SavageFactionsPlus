@@ -68,7 +68,7 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
     Inventory chest;
     Map<String, Object> bannerSerialized;
     private long lastDeath;
-   private int strikes = 0;
+    private int strikes = 0;
 
     // -------------------------------------------- //
     // Construct
@@ -118,13 +118,13 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
         resetPerms(); // Reset on new Faction so it has default values.
     }
 
-   public int getStrikes() {
-      return strikes;
-   }
+    public int getStrikes() {
+        return strikes;
+    }
 
-   public void setStrikes(int strikes) {
-      this.strikes = strikes;
-   }
+    public void setStrikes(int strikes) {
+        this.strikes = strikes;
+    }
 
     public HashMap<String, List<String>> getAnnouncements() {
         return this.announcements;
@@ -205,9 +205,13 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
         this.maxVaults = value;
     }
 
-    public String getFocused() { return this.player; }
+    public String getFocused() {
+        return this.player;
+    }
 
-    public void setFocused(String fp) { this.player = fp; }
+    public void setFocused(String fp) {
+        this.player = fp;
+    }
 
     public Set<String> getInvites() {
         return invites;
@@ -249,7 +253,7 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
 
     @Override
     public void disband(Player disbander) {
-    	disband(disbander, PlayerDisbandReason.PLUGIN);
+        disband(disbander, PlayerDisbandReason.PLUGIN);
     }
 
     @Override
@@ -996,9 +1000,9 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
     // promotes new leader, or disbands faction if no other members left
     @Override
     public void promoteNewLeader() {
-    	promoteNewLeader(false);
+        promoteNewLeader(false);
     }
-    
+
     @Override
     public void promoteNewLeader(boolean autoLeave) {
         if (!this.isNormal()) {
@@ -1026,16 +1030,16 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
 
             // no members left and faction isn't permanent, so disband it
             if (Conf.logFactionDisband) {
-                SavageFactions.plugin.log("The faction " + this.getTag() + " (" + this.getId() + ") has been disbanded since it has no members left" + (autoLeave ? " and by inactivity":"")+ ".");
+                SavageFactions.plugin.log("The faction " + this.getTag() + " (" + this.getId() + ") has been disbanded since it has no members left" + (autoLeave ? " and by inactivity" : "") + ".");
             }
 
             for (FPlayer fplayer : FPlayers.getInstance().getOnlinePlayers()) {
                 fplayer.msg("The faction %s<i> was disbanded.", this.getTag(fplayer));
             }
 
-            FactionDisbandEvent disbandEvent = new FactionDisbandEvent(null, getId(), autoLeave ? PlayerDisbandReason.INACTIVITY:PlayerDisbandReason.LEAVE);
+            FactionDisbandEvent disbandEvent = new FactionDisbandEvent(null, getId(), autoLeave ? PlayerDisbandReason.INACTIVITY : PlayerDisbandReason.LEAVE);
             Bukkit.getPluginManager().callEvent(disbandEvent);
-            
+
             Factions.getInstance().removeFaction(getId());
         } else { // promote new faction admin
             if (oldLeader != null) {

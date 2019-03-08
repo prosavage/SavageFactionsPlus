@@ -10,10 +10,8 @@ import com.massivecraft.factions.zcore.util.TL;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 public class CmdSeeChunk extends FCommand {
 
@@ -23,7 +21,7 @@ public class CmdSeeChunk extends FCommand {
     private boolean useParticles;
     private int length;
     private ParticleEffect effect;
-    private int taskID = - 1;
+    private int taskID = -1;
 
 
     //I remade it cause of people getting mad that I had the same seechunk as drtshock
@@ -63,10 +61,10 @@ public class CmdSeeChunk extends FCommand {
     }
 
     private void manageTask() {
-        if (taskID != - 1) {
+        if (taskID != -1) {
             if (seeChunkMap.keySet().size() == 0) {
                 Bukkit.getScheduler().cancelTask(taskID);
-                taskID = - 1;
+                taskID = -1;
             }
         } else {
             startTask();

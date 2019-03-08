@@ -164,7 +164,6 @@ public class FTeamWrapper {
     }
 
 
-
     private void updatePrefix(FScoreboard fboard) {
         if (SavageFactions.plugin.getConfig().getBoolean("scoreboard.default-prefixes", false)) {
             FPlayer fplayer = fboard.getFPlayer();

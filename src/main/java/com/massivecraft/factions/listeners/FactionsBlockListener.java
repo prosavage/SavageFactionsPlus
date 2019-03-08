@@ -160,7 +160,7 @@ public class FactionsBlockListener implements Listener {
         return true;
     }
 
-    @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockPlace(BlockPlaceEvent event) {
         if (!event.canBuild()) {
             return;
@@ -176,7 +176,7 @@ public class FactionsBlockListener implements Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockFromTo(BlockFromToEvent event) {
         if (!Conf.handleExploitLiquidFlow) {
             return;
@@ -200,14 +200,14 @@ public class FactionsBlockListener implements Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockDamage(BlockDamageEvent event) {
         if (event.getInstaBreak() && !playerCanBuildDestroyBlock(event.getPlayer(), event.getBlock().getLocation(), "destroy", false)) {
             event.setCancelled(true);
         }
     }
 
-    @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockPistonExtend(BlockPistonExtendEvent event) {
         if (!Conf.pistonProtectionThroughDenyBuild) {
             return;
@@ -314,7 +314,7 @@ public class FactionsBlockListener implements Listener {
 
     }
 
-    @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockPistonRetract(BlockPistonRetractEvent event) {
         // if not a sticky piston, retraction should be fine
         if (!event.isSticky() || !Conf.pistonProtectionThroughDenyBuild) {
@@ -449,7 +449,7 @@ public class FactionsBlockListener implements Listener {
         }
     }
 
-    @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onFrostWalker(EntityBlockFormEvent event) {
         if (event.getEntity() == null || event.getEntity().getType() != EntityType.PLAYER || event.getBlock() == null) {
             return;
@@ -494,6 +494,7 @@ public class FactionsBlockListener implements Listener {
 
         return !rel.confDenyBuild(otherFaction.hasPlayersOnline());
     }
+
     @EventHandler
     public void onFarmLandDamage(EntityChangeBlockEvent event) {
         if (event.getEntity() instanceof Player) {
@@ -548,8 +549,7 @@ public class FactionsBlockListener implements Listener {
     }
 
 
-
-    @EventHandler (priority = EventPriority.NORMAL, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         if (!playerCanBuildDestroyBlock(event.getPlayer(), event.getBlock().getLocation(), "destroy", false)) {
             event.setCancelled(true);

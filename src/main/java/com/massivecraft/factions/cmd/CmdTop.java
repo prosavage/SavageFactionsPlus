@@ -9,8 +9,6 @@ import com.massivecraft.factions.zcore.util.TL;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class CmdTop extends FCommand {
 
@@ -34,7 +32,7 @@ public class CmdTop extends FCommand {
     }
 
 
-   @Override
+    @Override
     public void perform() {
         // Can sort by: money, members, online, allies, enemies, power, land.
         // Get all Factions and remove non player ones.
@@ -54,8 +52,8 @@ public class CmdTop extends FCommand {
                     return 1;
                 } else if (f1Size > f2Size) {
                     return -1;
-                    }
-                    return 0;
+                }
+                return 0;
             });
         } else if (criteria.equalsIgnoreCase("start")) {
             factionList.sort((f1, f2) -> {
@@ -100,8 +98,8 @@ public class CmdTop extends FCommand {
                     return 1;
                 } else if (f1Size > f2Size) {
                     return -1;
-                    }
-                    return 0;
+                }
+                return 0;
             });
         } else if (criteria.equalsIgnoreCase("money") || criteria.equalsIgnoreCase("balance") || criteria.equalsIgnoreCase("bal")) {
             factionList.sort((f1, f2) -> {

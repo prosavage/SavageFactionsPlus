@@ -49,7 +49,7 @@ public class CmdClaim extends FCommand {
 
         if (forFaction.isWilderness()) {
             CmdUnclaim cmdUnclaim = SavageFactions.plugin.cmdBase.cmdUnclaim;
-            cmdUnclaim.execute(sender, args.size() > 1 ? args.subList(0, 1):args);
+            cmdUnclaim.execute(sender, args.size() > 1 ? args.subList(0, 1) : args);
             return;
         }
 

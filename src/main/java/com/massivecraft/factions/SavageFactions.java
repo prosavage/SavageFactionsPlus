@@ -2,6 +2,7 @@ package com.massivecraft.factions;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.massivecraft.factions.cmd.CmdAutoHelp;
@@ -17,6 +18,7 @@ import com.massivecraft.factions.util.Particles.ReflectionUtils;
 import com.massivecraft.factions.zcore.CommandVisibility;
 import com.massivecraft.factions.zcore.MCommand;
 import com.massivecraft.factions.zcore.MPlugin;
+import com.massivecraft.factions.zcore.PointStacker;
 import com.massivecraft.factions.zcore.fperms.Access;
 import com.massivecraft.factions.zcore.fperms.Permissable;
 import com.massivecraft.factions.zcore.fperms.PermissableAction;
@@ -79,6 +81,9 @@ public class SavageFactions extends MPlugin {
     private boolean hookedPlayervaults;
     private ClipPlaceholderAPIManager clipPlaceholderAPIManager;
     private boolean mvdwPlaceholderAPIManager = false;
+
+
+	public static HashMap<Location, Hologram> hologramMap = new HashMap<>();
 
 
    SkriptAddon skriptAddon;
@@ -164,6 +169,7 @@ public class SavageFactions extends MPlugin {
         // Load Conf from disk
         Conf.load();
         PointRaiding.load();
+	    PointRaiding.load();
         Essentials.setup();
         hookedPlayervaults = setupPlayervaults();
         FPlayers.getInstance().load();
@@ -235,6 +241,7 @@ public class SavageFactions extends MPlugin {
     		new FUpgradesGUI(),
     		new EXPUpgrade(),
     		new CropUpgrades(),
+		          new PointStackerListener(),
     		new SpawnerUpgrades(),
     	};
     	
@@ -253,6 +260,7 @@ public class SavageFactions extends MPlugin {
             divider();
         }
 
+	    Bukkit.getScheduler().scheduleSyncDelayedTask(this, PointStacker::createAllHolograms, 30L);
         this.setupPlaceholderAPI();
         this.postEnable();
         this.loadSuccessful = true;
@@ -458,6 +466,9 @@ public class SavageFactions extends MPlugin {
            // So any edits done are saved, this way manual edits to json can go through.
 
            // Conf.save();
+	        PointRaiding.save();
+
+
         }
 
         if (AutoLeaveTask != null) {

@@ -1,7 +1,6 @@
 package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.PointRaiding;
-import com.massivecraft.factions.SavageFactions;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.zcore.PointStacker;
 import com.massivecraft.factions.zcore.util.TL;
@@ -38,7 +37,8 @@ public class CmdStacker extends FCommand {
             msg(TL.COMMAND_STACKER_NOTENOUGHMONEY);
             return;
         }
-        SavageFactions.plugin.getEcon().bankWithdraw(me.getName(), PointRaiding.pointStackerCost);
+	    fme.takeMoney(PointRaiding.pointStackerCost);
+	    fme.getPlayer().getInventory().addItem(PointStacker.buildItemStack());
     }
 
     public TL getUsageTranslation() {

@@ -29,6 +29,7 @@ public abstract class Wand {
       return nbtItem.getItem();
    }
 
+
    public static boolean isWand(ItemStack itemStack) {
       NBTItem nbtItem = new NBTItem(itemStack);
       return nbtItem.hasKey("Wand");

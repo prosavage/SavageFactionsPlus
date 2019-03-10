@@ -68,7 +68,8 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
     Inventory chest;
     Map<String, Object> bannerSerialized;
     private long lastDeath;
-   private int strikes = 0;
+	private int strikes = 0;
+	private int points = 0;
 
     // -------------------------------------------- //
     // Construct
@@ -192,6 +193,22 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
     public void setWarpPassword(String warp, String password) {
         warpPasswords.put(warp.toLowerCase(), password);
     }
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int newValue) {
+		points = newValue;
+	}
+
+	public void addPoints(int add) {
+		points += add;
+	}
+
+	public void takePoints(int remove) {
+		points -= remove;
+	}
 
     public void clearWarps() {
         warps.clear();
@@ -884,7 +901,8 @@ public abstract class MemoryFaction implements Faction, EconomyParticipator {
         return new HashSet<>(fplayers);
     }
 
-    public Set<FPlayer> getFPlayersWhereOnline(boolean online) {
+
+	public Set<FPlayer> getFPlayersWhereOnline(boolean online) {
         Set<FPlayer> ret = new HashSet<>();
         if (!this.isNormal()) {
             return ret;

@@ -51,16 +51,14 @@ public class SandWand extends Wand {
          return false;
       }
       NBTItem nbtItem = new NBTItem(itemStack);
-      if (nbtItem.hasKey("Sand")) {
-         return true;
-      }
-      return false;
+	   return nbtItem.hasKey("Sand");
    }
 
 
    public void run() {
       if (!Conf.sandWandItemsToRemove.contains(block.getType())) {
          this.player.sendMessage(TL.WAND_THISBLOCK_ISINVALID.toString());
+	      updateWand();
          return;
       }
       ArrayList<Block> validBlocks = new ArrayList<>();

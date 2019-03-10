@@ -779,6 +779,15 @@ public enum TL {
     COMMAND_RULES_SET_SUCCESS("&cRule set successfully!"),
     COMMAND_RULES_CLEAR_SUCCESS("&cRule cleared successfully!"),
 
+
+	/**
+	 * Stacker Language
+	 */
+	STACKER_INVALIDPLACEMENT("&c&l[!]&7 You must have a faction, and place the point stacker in your own territory as the leader."),
+	STACKER_CANNOTBREAK("&c&l[!]&7 You cannot break another faction's point stacker, you must attack it!"),
+	STACKER_SUCCESS("&c&l[!]&7 {player} have placed a point stacker!"),
+
+
     /**
      * Leaving - This is accessed through a command, and so it MAY need a COMMAND_* slug :s
      */
@@ -803,8 +812,11 @@ public enum TL {
    WAND_CANNOT_USE_HERE("&cYou cannot use wands on that chest!"),
    WAND_THISBLOCK_ISINVALID("&cThis block is invalid."),
    WAND_SAND_SUCCESS("&cSuccessfully removed all vertical sand blocks."),
+	WAND_LIGHTNING_WRONGENTITY("&cThe target entity must be a creeper!"),
+	WAND_LIGHTNING_SUCCESS("&cSmiting Creeper...."),
 
-    /**
+
+	/**
      * Claiming - Same as above basically. No COMMAND_* because it's not in a command class, but...
      */
     CLAIM_PROTECTED("<b>This land is protected"),

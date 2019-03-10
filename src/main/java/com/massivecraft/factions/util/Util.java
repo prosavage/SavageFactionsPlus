@@ -17,6 +17,12 @@ public class Util {
       return ChatColor.translateAlternateColorCodes('&', string);
    }
 
+	public static String color(String message, Placeholder... placeholders) {
+		for (Placeholder placeholder : placeholders) {
+			message = message.replace(placeholder.getKey(), placeholder.getValue());
+		}
+		return color(message);
+	}
 
    public static List<String> colorWithPlaceholders(List<String> string, Placeholder... placeholders) {
       List<String> colored = new ArrayList<>();

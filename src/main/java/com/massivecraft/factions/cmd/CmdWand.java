@@ -7,6 +7,7 @@ import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.util.Placeholder;
 import com.massivecraft.factions.zcore.util.TL;
 import com.massivecraft.factions.zcore.wands.impl.CondenseWand;
+import com.massivecraft.factions.zcore.wands.impl.LightningWand;
 import com.massivecraft.factions.zcore.wands.impl.SandWand;
 import com.massivecraft.factions.zcore.wands.impl.SellWand;
 import org.bukkit.ChatColor;
@@ -57,7 +58,7 @@ public class CmdWand extends FCommand {
       ItemStack wand = new ItemStack(Material.STICK);
       switch (rodType.toLowerCase()) {
          case "lightning":
-            // TODO: Implement Lightning Wands
+	         wand = LightningWand.buildItem(Conf.lightningWandUses);
             break;
          case "sand":
             wand = SandWand.buildItem(Conf.sandWandUses);

@@ -23,6 +23,7 @@ import com.massivecraft.factions.zcore.util.TagUtil;
 import com.massivecraft.factions.zcore.util.TextUtil;
 import com.massivecraft.factions.zcore.wands.Wand;
 import com.massivecraft.factions.zcore.wands.impl.CondenseWand;
+import com.massivecraft.factions.zcore.wands.impl.LightningWand;
 import com.massivecraft.factions.zcore.wands.impl.SandWand;
 import com.massivecraft.factions.zcore.wands.impl.SellWand;
 import net.coreprotect.CoreProtect;
@@ -355,6 +356,25 @@ public class FactionsPlayerListener implements Listener {
       }
     }
     return true;
+  }
+
+
+  @EventHandler
+  public void onWandEntityUse(PlayerInteractAtEntityEvent event) {
+    if (event.getRightClicked() == null
+            || event.getPlayer() == null) {
+      return;
+    }
+
+    Player player = event.getPlayer();
+    ItemStack heldItem = player.getItemInHand();
+    if (!LightningWand.isLightningWand(heldItem)) {
+      return;
+    }
+    event.setCancelled(true);
+    LightningWand lightningWand = new LightningWand(heldItem, player, event.getRightClicked());
+    lightningWand.takeWand();
+    lightningWand.run();
   }
 
   @EventHandler

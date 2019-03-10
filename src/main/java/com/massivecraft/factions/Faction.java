@@ -184,6 +184,14 @@ public interface Faction extends EconomyParticipator {
     @Deprecated
     boolean isNone();
 
+	int getPoints();
+
+	void setPoints(int newValue);
+
+	void addPoints(int add);
+
+	void takePoints(int remove);
+
     boolean isWilderness();
 
     boolean isSafeZone();

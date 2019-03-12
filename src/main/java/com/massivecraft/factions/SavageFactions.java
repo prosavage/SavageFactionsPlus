@@ -2,13 +2,13 @@ package com.massivecraft.factions;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import com.earth2me.essentials.Essentials;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.massivecraft.factions.cmd.CmdAutoHelp;
 import com.massivecraft.factions.cmd.FCmdRoot;
 import com.massivecraft.factions.integration.Econ;
-import com.massivecraft.factions.integration.Essentials;
 import com.massivecraft.factions.integration.Worldguard;
 import com.massivecraft.factions.integration.dynmap.EngineDynmap;
 import com.massivecraft.factions.listeners.*;
@@ -60,6 +60,9 @@ public class SavageFactions extends MPlugin {
     public static Permission perms = null;
 
     public boolean PlaceholderApi;
+
+   public Essentials ess;
+
     // Commands
     public FCmdRoot cmdBase;
     public CmdAutoHelp cmdAutoHelp;
@@ -168,9 +171,10 @@ public class SavageFactions extends MPlugin {
 
         // Load Conf from disk
         Conf.load();
+       com.massivecraft.factions.integration.Essentials.setup();
         PointRaiding.load();
 	    PointRaiding.load();
-        Essentials.setup();
+
         hookedPlayervaults = setupPlayervaults();
         FPlayers.getInstance().load();
         Factions.getInstance().load();
@@ -233,7 +237,7 @@ public class SavageFactions extends MPlugin {
 
         // Register Event Handlers
         eventsListener = new Listener[] {
-    		new FactionsPlayerListener(this),
+                new FactionsPlayerListener(),
 		          new FactionsChatListener(),
 		          new FactionsEntityListener(),
     		new FactionsExploitListener(),
@@ -251,6 +255,8 @@ public class SavageFactions extends MPlugin {
         // since some other plugins execute commands directly through this command interface, provide it
         getCommand(this.refCommand).setExecutor(this);
         getCommand(this.refCommand).setTabCompleter(this);
+
+       setupEssentials();
 
         if (getDescription().getFullName().contains("BETA")) {
             divider();
@@ -372,6 +378,12 @@ public class SavageFactions extends MPlugin {
               + " there is no need to migrate old players.json file.");
     }
   }
+
+
+   private boolean setupEssentials() {
+      SavageFactions.plugin.ess = (Essentials) this.getServer().getPluginManager().getPlugin("Essentials");
+      return SavageFactions.plugin.ess == null;
+   }
 
    public void changeItemIDSInConfig() {
         log("Starting conversion of legacy material in config to 1.13 materials.");

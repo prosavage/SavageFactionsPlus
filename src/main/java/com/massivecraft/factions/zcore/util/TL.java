@@ -321,6 +321,7 @@ public enum TL {
     COMMAND_HOME_TOTELEPORT("to teleport to your faction home"),
     COMMAND_HOME_FORTELEPORT("for teleporting to your faction home"),
     COMMAND_HOME_DESCRIPTION("Teleport to the faction home"),
+    COMMAND_HOME_BLOCKED("&c&l[!] You may not teleport to a home that is claimed by &b%1$s"),
 
     COMMAND_INSPECT_DISABLED_MSG("&c&l[!]&7 Inspect mode is now &cdisabled."),
     COMMAND_INSPECT_DISABLED_NOFAC("&c&l[!]&7 Inspect mode is now &cdisabled,&7 because you &cdo not have a faction!"),

@@ -1008,7 +1008,7 @@ public class FactionsPlayerListener implements Listener {
         Block block = event.getClickedBlock();
 
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && block.getType() == MultiversionMaterials.GRASS_BLOCK.parseMaterial()
-                && event.hasItem() && event.getItem().getType() == Material.BONE_MEAL) {
+                && event.hasItem() && event.getItem().getType() == MultiversionMaterials.BONE_MEAL.parseMaterial()) {
             if (!FactionsBlockListener.playerCanBuildDestroyBlock(event.getPlayer(), block.getLocation(), PermissableAction.BUILD.name(), true)) {
                 FPlayer me = FPlayers.getInstance().getById(event.getPlayer().getUniqueId().toString());
                 Faction otherFaction = Board.getInstance().getFactionAt(new FLocation(block.getLocation()));

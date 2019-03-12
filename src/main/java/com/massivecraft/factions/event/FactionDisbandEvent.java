@@ -11,9 +11,9 @@ import org.bukkit.event.Cancellable;
  */
 public class FactionDisbandEvent extends FactionEvent implements Cancellable {
 
-    private boolean cancelled = false;
     private final Player sender;
     private final PlayerDisbandReason reason;
+	private boolean cancelled = false;
 
     public FactionDisbandEvent(Player sender, String factionId, PlayerDisbandReason reason) {
         super(Factions.getInstance().getFactionById(factionId));
@@ -30,8 +30,8 @@ public class FactionDisbandEvent extends FactionEvent implements Cancellable {
     }
 
     public PlayerDisbandReason getReason() {
-		return reason;
-	}
+	    return reason;
+    }
 
 	@Override
     public boolean isCancelled() {
@@ -42,8 +42,8 @@ public class FactionDisbandEvent extends FactionEvent implements Cancellable {
     public void setCancelled(boolean c) {
         cancelled = c;
     }
-    
-    public enum PlayerDisbandReason {
+
+	public enum PlayerDisbandReason {
         COMMAND,
         PLUGIN,
         INACTIVITY,

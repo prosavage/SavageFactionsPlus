@@ -22,6 +22,7 @@ public enum Permission {
     CLAIM_LINE("claim.line"),
     CLAIM_RADIUS("claim.radius"),
     CONFIG("config"),
+	CONVERT("convert"),
     CREATE("create"),
     DEFAULTRANK("defaultrank"),
     DEINVITE("deinvite"),
@@ -109,9 +110,9 @@ public enum Permission {
     STACKER_ADMIN("stacker.admin"),
     WARP("warp"),
     CHEST("Chest"),
-   SETSTRIKES("setstrikes"),
-   GIVETRENCH("givetrench"),
-   GIVEWAND("givewand");
+	SETSTRIKES("setstrikes"),
+	GIVETRENCH("givetrench"),
+	GIVEWAND("givewand");
 
     public final String node;
 

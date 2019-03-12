@@ -545,7 +545,7 @@ public abstract class MemoryFPlayer implements FPlayer {
         } else if (hasFaction() && getFaction().isPowerFrozen()) {
             return; // Don't let power regen if faction power is frozen.
         }
-        
+
         long now = System.currentTimeMillis();
         long millisPassed = now - this.lastPowerUpdateTime;
         this.lastPowerUpdateTime = now;
@@ -557,7 +557,7 @@ public abstract class MemoryFPlayer implements FPlayer {
 
         PowerRegenEvent powerRegenEvent = new PowerRegenEvent(getFaction(), this);
         Bukkit.getServer().getPluginManager().callEvent(powerRegenEvent);
-        
+
         if (!powerRegenEvent.isCancelled())
 	        this.alterPower(millisPassed * Conf.powerPerMinute / 60000); // millisPerMinute : 60 * 1000
     }
@@ -572,13 +572,13 @@ public abstract class MemoryFPlayer implements FPlayer {
             if (this.power - loss < Conf.powerOfflineLossLimit) {
                 loss = this.power;
             }
-            this.alterPower(- loss);
+	        this.alterPower(-loss);
         }
     }
 
     public void onDeath() {
         this.updatePower();
-        this.alterPower(- Conf.powerPerDeath);
+	    this.alterPower(-Conf.powerPerDeath);
         if (hasFaction()) {
             getFaction().setLastDeath(System.currentTimeMillis());
         }
@@ -710,8 +710,8 @@ public abstract class MemoryFPlayer implements FPlayer {
 
             FactionDisbandEvent disbandEvent = new FactionDisbandEvent(null, getId(), PlayerDisbandReason.LEAVE);
             Bukkit.getPluginManager().callEvent(disbandEvent);
-            
-            Factions.getInstance().removeFaction(myFaction.getId());
+
+	        Factions.getInstance().removeFaction(myFaction.getId());
             if (Conf.logFactionDisband) {
                 SavageFactions.plugin.log(TL.LEAVE_DISBANDEDLOG.format(myFaction.getTag(), myFaction.getId(), this.getName()));
             }
@@ -1190,16 +1190,20 @@ public abstract class MemoryFPlayer implements FPlayer {
 
     @Override
     public String getRolePrefix() {
-    	
-    	switch (getRole())
-    	{
-    		case RECRUIT:  return Conf.prefixRecruit;
-    		case NORMAL: return Conf.prefixNormal;
-    		case MODERATOR: return Conf.prefixMod;
-    		case COLEADER: return Conf.prefixCoLeader;
-    		case LEADER: return Conf.prefixLeader;
-    	}
-    	
+
+	    switch (getRole()) {
+		    case RECRUIT:
+			    return Conf.prefixRecruit;
+		    case NORMAL:
+			    return Conf.prefixNormal;
+		    case MODERATOR:
+			    return Conf.prefixMod;
+		    case COLEADER:
+			    return Conf.prefixCoLeader;
+		    case LEADER:
+			    return Conf.prefixLeader;
+	    }
+
         return null;
     }
 

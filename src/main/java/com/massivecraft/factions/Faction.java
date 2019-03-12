@@ -41,9 +41,9 @@ public interface Faction extends EconomyParticipator {
 
     void clearWarps();
 
- int getStrikes();
+	int getStrikes();
 
- void setStrikes(int strikes);
+	void setStrikes(int strikes);
 
     int getMaxVaults();
 
@@ -59,7 +59,7 @@ public interface Faction extends EconomyParticipator {
 
     String getFocused();
 
-   void setFocused(String setFocused);
+	void setFocused(String setFocused);
 
     String getId();
 
@@ -69,9 +69,9 @@ public interface Faction extends EconomyParticipator {
 
     void deinvite(FPlayer fplayer);
 
-   void setUpgrade(Upgrade upgrade, int level);
+	void setUpgrade(Upgrade upgrade, int level);
 
-   int getUpgrade(Upgrade upgrade);
+	int getUpgrade(Upgrade upgrade);
 
     boolean isInvited(FPlayer fplayer);
 
@@ -217,7 +217,7 @@ public interface Faction extends EconomyParticipator {
     void resetPerms();
 
     void disband(Player disbander);
-    
+
     void disband(Player disbander, PlayerDisbandReason reason);
 
     // -------------------------------
@@ -285,9 +285,9 @@ public interface Faction extends EconomyParticipator {
 
     FPlayer getFPlayerAdmin();
 
-   FPlayer getFPlayerLeader();
+	FPlayer getFPlayerLeader();
 
-   ArrayList<FPlayer> getFPlayersWhereRole(Role role);
+	ArrayList<FPlayer> getFPlayersWhereRole(Role role);
 
     ArrayList<Player> getOnlinePlayers();
 
@@ -300,8 +300,8 @@ public interface Faction extends EconomyParticipator {
     // used when current leader is about to be removed from the faction;
     // promotes new leader, or disbands faction if no other members left
     void promoteNewLeader();
-    
-    void promoteNewLeader(boolean autoLeave);
+
+	void promoteNewLeader(boolean autoLeave);
 
     Role getDefaultRole();
 

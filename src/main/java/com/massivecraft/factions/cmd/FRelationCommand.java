@@ -103,14 +103,14 @@ public abstract class FRelationCommand extends FCommand {
     }
 
     private boolean hasMaxRelations(Faction them, Relation targetRelation) {
-        int max = SavageFactions.plugin.getConfig().getInt("max-relations." + targetRelation.toString(), - 1);
+	    int max = SavageFactions.plugin.getConfig().getInt("max-relations." + targetRelation.toString(), -1);
         if (SavageFactions.plugin.getConfig().getBoolean("max-relations.enabled", false)) {
-            if (max != - 1) {
+	        if (max != -1) {
                 if (myFaction.getRelationCount(targetRelation) >= max) {
                     msg(TL.COMMAND_RELATIONS_EXCEEDS_ME, max, targetRelation.getPluralTranslation());
                     return true;
                 }
-                if (them.getRelationCount(targetRelation) > max) {
+		        if (them.getRelationCount(targetRelation) >= max) {
                     msg(TL.COMMAND_RELATIONS_EXCEEDS_THEY, max, targetRelation.getPluralTranslation());
                     return true;
                 }

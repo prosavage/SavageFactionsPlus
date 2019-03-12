@@ -2,7 +2,6 @@ package com.massivecraft.factions.cmd;
 
 import com.massivecraft.factions.SavageFactions;
 import com.massivecraft.factions.listeners.FactionsBlockListener;
-import com.massivecraft.factions.listeners.FactionsPlayerListener;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.util.WarmUpUtil;
 import com.massivecraft.factions.zcore.util.TL;
@@ -30,7 +29,6 @@ public class CmdTpBanner extends FCommand {
             return;
         }
 
-        final FactionsPlayerListener fpl = new FactionsPlayerListener(SavageFactions.plugin);
 
         if (FactionsBlockListener.bannerLocations.containsKey(fme.getTag())) {
             fme.msg(TL.COMMAND_TPBANNER_SUCCESS);

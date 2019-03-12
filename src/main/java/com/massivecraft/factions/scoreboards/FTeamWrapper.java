@@ -39,7 +39,7 @@ public class FTeamWrapper {
             return;
         }
 
-        if (!SavageFactions.plugin.getConfig().getBoolean("scoreboard.default-prefixes", false)) {
+	    if (!SavageFactions.plugin.getConfig().getBoolean("scoreboard.default-prefixes", false) || SavageFactions.plugin.getConfig().getBoolean("See-Invisible-Faction-Members")) {
             return;
         }
 
@@ -64,7 +64,7 @@ public class FTeamWrapper {
             return;
         }
 
-        if (!SavageFactions.plugin.getConfig().getBoolean("scoreboard.default-prefixes", false)) {
+	    if (!SavageFactions.plugin.getConfig().getBoolean("scoreboard.default-prefixes", false) || SavageFactions.plugin.getConfig().getBoolean("See-Invisible-Faction-Members")) {
             return;
         }
 
@@ -163,11 +163,17 @@ public class FTeamWrapper {
         }
     }
 
+
     private void updatePrefix(FScoreboard fboard) {
         if (SavageFactions.plugin.getConfig().getBoolean("scoreboard.default-prefixes", false)) {
             FPlayer fplayer = fboard.getFPlayer();
             Team team = teams.get(fboard);
             boolean focused = false;
+
+	        if (SavageFactions.plugin.getConfig().getBoolean("See-Invisible-Faction-Members", false)) {
+		        team.setCanSeeFriendlyInvisibles(true);
+	        }
+
             if ((SavageFactions.plugin.getConfig().getBoolean("ffocus.Enabled")) && (fplayer.getFaction() != null) && (fplayer.getFaction().getFocused() != null)) {
                 for (FPlayer fp : this.faction.getFPlayersWhereOnline(true)) {
                     if (fplayer.getFaction().getFocused().equalsIgnoreCase(fp.getName())) {

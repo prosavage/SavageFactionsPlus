@@ -3,21 +3,21 @@ package com.massivecraft.factions.util;
 
 public class Placeholder {
 
-   private String key, value;
+	private String key, value;
 
-   public Placeholder(String key, String value) {
-      this.key = key;
-      this.value = value;
-   }
+	public Placeholder(String key, String value) {
+		this.key = key;
+		this.value = value;
+	}
 
 
-   public String getKey() {
-      return this.key;
-   }
+	public String getKey() {
+		return this.key;
+	}
 
-   public String getValue() {
-      return this.value;
-   }
+	public String getValue() {
+		return this.value;
+	}
 
 
 }

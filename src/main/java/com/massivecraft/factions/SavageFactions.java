@@ -234,10 +234,10 @@ public class SavageFactions extends MPlugin {
         // Register Event Handlers
         eventsListener = new Listener[] {
     		new FactionsPlayerListener(this),
-    		new FactionsChatListener(this),
-    		new FactionsEntityListener(this),
+		          new FactionsChatListener(),
+		          new FactionsEntityListener(),
     		new FactionsExploitListener(),
-    		new FactionsBlockListener(this),
+		          new FactionsBlockListener(),
     		new FUpgradesGUI(),
     		new EXPUpgrade(),
     		new CropUpgrades(),

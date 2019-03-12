@@ -282,6 +282,7 @@ public enum TL {
     COMMAND_DISBAND_HOLDINGS("&c&l[!]&7 &7You have been given the disbanded &cfaction's bank&7, totaling &c%1$s."),
     COMMAND_DISBAND_CONFIRM("&c&l[!]&7 Your Faction has&c {tnt} &7tnt left in the bank, it will be &clost&7 if the faction is &cdisbanded&7. Type&c /f disband &7again within &c10&7 seconds to&c disband&7."),
     COMMAND_DISBAND_DESCRIPTION("Disband a faction"),
+    COMMAND_DISBAND_PLAYER("&c&l[!] &7You have disbanded your &cfaction"),
 
     COMMAND_FLY_DISABLED("&c&l[!]&7 Sorry, Faction flight is &cdisabled &7on this server"),
     COMMAND_FLY_DESCRIPTION("Enter or leave Faction flight mode"),
